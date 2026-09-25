@@ -154,7 +154,7 @@ var nette = function () {
 	 * @return {jqXHR|null}
 	 */
 	this.ajax = function (settings, ui, e) {
-		if ($.type(settings) === 'string') {
+		if (typeof settings === 'string') {
 			settings = {url: settings};
 		}
 		if (!settings.nette && ui && e) {
@@ -195,7 +195,7 @@ var nette = function () {
 				}
 				if (typeof settings.off === 'string') settings.off = [settings.off];
 				settings.off = $.grep($.each(settings.off, function (off) {
-					return $.trim(off);
+					return String(off).trim();
 				}), function (off) {
 					return off.length;
 				});
